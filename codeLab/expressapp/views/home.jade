@@ -1,0 +1,31 @@
+extends layout
+
+block head
+    title="登陆成功"
+    style.
+        .home {
+            margin-left: 45px;
+        }
+        .form {
+            margin-top: 90px;
+        }
+        .logout {
+            margin-top: 145px;
+        }
+block content
+    div.home
+        | 主页
+
+        form.form(action="#" role="form")
+        | 登陆成功
+        div.logout
+            input(type="button", onclick="logout()", value="退 出")
+
+block foot
+    | Home Page
+
+block script
+    script.
+        function logout(){
+            window.location.href="/logout";
+        }

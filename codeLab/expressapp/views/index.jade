@@ -1,0 +1,34 @@
+extends layout
+
+block head
+    - var name='Express 学习'
+    title=name
+    link(rel='stylesheet', type="text/css" href="/stylesheets/style.css")
+    style.
+        #index {
+            margin-left: 35px;
+        }
+        .form {
+            margin-top: 90px;
+            margin-left: 60px;
+        }
+        .login-button {
+            margin-top: 145px;
+        }
+
+block content
+    div#index
+        !{message}
+        首页
+        form.form(action="#", role="form")
+            div.login-button
+                input(type="button", onclick="login()" value="登 陆")
+
+block foot
+    footer create by wangxb &copy 2016
+
+block script
+    script.
+        function login(){
+            window.location.href="/login";
+        }

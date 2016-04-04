@@ -1,0 +1,57 @@
+extends layout
+
+block head
+    title="用户登录"
+    meta(charset="utf-8")
+    script(src="http://code.jquery.com/jquery-2.1.1.min.js")
+
+    style.
+        .login {
+            width:200px;
+            margin:auto;
+            margin-top:50px;
+        }
+        #username {
+            margin: 20px 0px;
+        }
+        .login-button {
+            margin-top:30px;
+            margin-left:125px;
+        }
+
+block content
+    div.login
+        !{message}
+        用户登录
+
+        form(action="#", role="form", method="post")
+            input#username(type="text", name="username")
+            input#password(type="password", name="password")
+            div.login-button
+                input(type="button", onclick="login();", value="登 陆")
+
+block foot
+    | This is Login page
+
+block script
+    script.
+        function login(){
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var data = { "username": username, "password":password};
+            $.ajax({
+               url:'/login',
+               type:'POST',
+               data:data,
+               success:function(data,status){
+                   if(status == 'success'){
+                        location.href='home';
+                    }
+                },
+                error:function(data,status,e){
+                  if(status == "error"){
+                       location.href='login';
+                     }
+                }
+            });
+        }
